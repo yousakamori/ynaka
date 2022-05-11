@@ -1,0 +1,190 @@
+---
+title: koechi
+description: 介護の情報を管理 ・ 共有するサービスです
+date: '2022-05-15'
+image: '/images/koechi/koechi.jpg'
+websiteLink: 'https://koechi.com'
+githubLink: 'https://github.com/yousakamori/koechi-api'
+---
+
+<Image alt={`Bridge`} src='/images/koechi/koechi.jpg' width={1440} height={764} priority />
+
+## 1.サービスの概要
+
+- [サイト URL](https://koechi.com)
+- [Github front](https://github.com/yousakamori/koechi-front)
+- [Github back](https://github.com/yousakamori/koechi-api)
+
+スマホからも見れます。
+
+「ログイン画面」からゲストログインできます。
+
+![guest-login](/images/koechi/guest-login.jpg)
+
+以下の困りごとを解決したいという思いで、このポートフォリオを作成しました。
+
+- 利用サービスが複数あり紙での管理に不便を感じた
+- あとから見返しづらかった（検索できない）
+- 朝の忙しい時間にノートを開いて連絡内容を書くのがめんどうだった
+- 介護の知見を共有したいという思いがあった
+
+## 2.使用技術
+
+### フロントエンド
+
+- Next.js 12.0.8
+- Tailwind CSS 3.0.7
+- TypeScript 4.4.3
+- Tiptap（WYSIWYG Editor）
+- Recoil
+- SWR
+- React Hook Form
+- Emoji Mart
+
+### バックエンド
+
+- Ruby 3.0.4
+- Ruby on Rails 7.0.2.4
+- SendGrid
+- Ransack 3.1.0
+- PostgreSQL 13.6
+- RSpec 3.11
+
+### インフラ
+
+- Docker 20.10.14 / docker-compose 1.29.2 （開発環境）
+- AWS （EC2, ALB, ACM, S3, RDS, Route53, VPC, EIP, IAM, CloudFront）
+- Vercel
+- nginx 1.20.0
+- Puma 5.6.4
+- CircleCI 2.1
+
+### その他
+
+- Git 2.30.1 / GitHub
+- TablePlus
+- VSCode
+
+## 3. インフラ構成図 & 自動デプロイの流れ
+
+![infra](/images/koechi/aws.jpg)
+
+![deploy](/images/koechi/deploy.jpg)
+
+## 4. ER 図
+
+![er](/images/koechi/er.jpg)
+
+## 5. サービスの特徴
+
+### 介護の知見や意見交換
+
+複数人で意見交換ができる機能（トーク）
+
+▼ トーク一覧
+
+![talk](/images/koechi/talk.jpg)
+
+▼ トーク詳細
+
+![talk-detail](/images/koechi/talk-detail.jpg)
+
+### 記録の管理 / 共有
+
+スペース(グループ)を作り招待したユーザー同士でノート(記録)を共有する機能
+
+▼ スペース詳細(ノートタブ)
+
+![space-detail-note](/images/koechi/space-detail-note.jpg)
+
+▼ スペース詳細(ユーザー招待タブ)
+
+![space-detail-member](/images/koechi/space-detail-member.jpg)
+
+▼ ノート詳細
+
+![note-detail](/images/koechi/note-detail.jpg)
+
+▼ ノート編集(WYSIWYG)
+
+![note-edit](/images/koechi/note-edit.jpg)
+
+### ダッシュボード
+
+ノート（リストとカレンダー形式） ・ いいねした投稿 ・ スペース（アーカイブ機能あり） の管理
+
+▼ ノート リスト
+
+![note-list](/images/koechi/note-list.jpg)
+
+▼ ノート カレンダー（月）
+
+![note-month](/images/koechi/note-month.jpg)
+
+▼ ノート カレンダー（日）
+
+![note-day](/images/koechi/note-day.jpg)
+
+▼ いいねした投稿
+
+![like](/images/koechi/like.jpg)
+
+▼ スペース一覧
+
+![space](/images/koechi/space.jpg)
+
+## 6. サービスの機能一覧
+
+### メイン機能
+
+- トップページの一覧表示（SSR）
+- いいね（polymorphic）
+- フォロー
+- 通知機能（コメント ・ いいね ・ フォロー されたとき）
+- トーク（知見の共有 / SSR CRUD 処理）
+- スペース（記録共有のためのグループ / CRUD 処理）
+- ユーザー招待
+- ノート（記録の共有 ・ コメントの投稿 / CRUD 処理）
+- 検索（トーク ・ ノート ・ ユーザー / Ransack）
+
+### 認証機能
+
+- ユーザー登録・ログイン・ログアウト
+- メールアドレス認証
+- パスワード再設定
+- メールアドレス再設定
+- プロフィール編集
+- 退会
+
+#### （参考）検索
+
+▼ 検索された　トーク ・ ノート ・ ユーザー　の件数と結果を取得しています。
+
+![search_gif](/images/koechi/search.gif)
+
+▼ 件数が多い場合はページネーション表示
+
+#### （参考）通知機能
+
+▼ 件数が多い場合は無限スクロール表示
+
+![notification](/images/koechi/notification.gif)
+
+#### （参考）ユーザー登録
+
+▼ 入力したメールアドレス宛にマジックリンクが送られる
+
+![signup](/images/koechi/signup.jpg)
+
+▼ マジックリンクを踏むと　名前 ・ パスワード ・ プロフィール　の入力画面へ遷移
+
+![onboard-username](/images/koechi/onboard-username.jpg)
+
+![onboard-profile](/images/koechi/onboard-profile.jpg)
+
+**最後までご覧いただき、ありがとうございます 🙇‍♂️**
+
+## 作者
+
+- you nakamura
+- [Twitter アカウント](https://twitter.com/y_sakamori)
