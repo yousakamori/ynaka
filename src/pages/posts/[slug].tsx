@@ -58,7 +58,9 @@ const PostDetailPage: NextPage<Props> = ({ frontMatter, source }) => {
   const customMeta: Meta = {
     title: `${frontMatter.title} - ${APP_NAME}`,
     description: frontMatter.description,
-    image: `${APP_URL}/${frontMatter.image}`,
+    image: `https://res.cloudinary.com/ynakamura/image/upload/c_fit,l_text:Sawarabi%20Gothic_72_bold:${encodeURIComponent(
+      frontMatter.title,
+    )},co_rgb:333,w_1000,y_-50/v1653050834/ogp_rzdzei.png`,
     date: frontMatter.date,
     type: 'article',
   };
